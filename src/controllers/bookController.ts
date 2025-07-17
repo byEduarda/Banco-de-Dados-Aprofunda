@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Book } from '../models/Books';
+import { Book } from '../models/Book';
 
 export async function createBook(req: Request, res: Response) {
   try {
