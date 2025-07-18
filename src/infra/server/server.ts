@@ -12,8 +12,8 @@ app.get('/', (_req, res) => {
   res.send('API de Alunos e Cursos');
 });
 
-app.use(alunoRoutes);
-app.use(cursoRoutes);
+app.use('/api/alunos', alunoRoutes);
+app.use('/api/cursos', cursoRoutes);
 
 export function startServer(): void {
   app.listen(PORT, () => {
