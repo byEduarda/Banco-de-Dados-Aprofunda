@@ -44,38 +44,42 @@ API REST simples para gerenciar alunos e cursos, usando Node.js, Express, TypeSc
 5. A API estará rodando em: http://localhost:3000
    
 
+## Endpoints principais
 
-Endpoints principais
-Cursos
-POST /api/cursos — Cria um novo curso
-Body JSON:
+### Cursos
 
-json
-Copiar código
-{
-  "nome": "Engenharia de Software",
-  "codigo": "ENG123"
-}
-GET /api/cursos — Lista todos os cursos
+- **POST** `/api/cursos` — Cria um novo curso  
+  Body JSON:  
+  {
+    "nome": "Engenharia de Software",
+    "codigo": "ENG123"
+  }
 
-Alunos
-POST /api/alunos — Cria um novo aluno vinculado a um curso
-Body JSON:
+- **GET** `/api/cursos` — Lista todos os cursos
 
-json
-Copiar código
-{
-  "nome": "João Silva",
-  "email": "joao@email.com",
-  "curso": "<id_do_curso>"
-}
-GET /api/alunos — Lista todos os alunos com os dados do curso populados
+---
 
-Testes
+### Alunos
+
+- **POST** `/api/alunos` — Cria um novo aluno vinculado a um curso  
+  Body JSON:  
+  {
+    "nome": "João Silva",
+    "email": "joao@email.com",
+    "curso": "<id_do_curso>"
+  }
+
+- **GET** `/api/alunos` — Lista todos os alunos com os dados do curso populados
+
+---
+
+## Testes
+
 Você pode usar o Thunder Client, Postman ou Insomnia para testar as rotas acima.
 
-Observações
-Certifique-se de liberar o IP 0.0.0.0/0 na seção Network Access do MongoDB Atlas para permitir conexões de qualquer lugar (útil para desenvolvimento).
+---
 
-Configure o usuário e senha corretamente no MongoDB Atlas na seção Database Access.
+## Observações
 
+- Certifique-se de liberar o IP `0.0.0.0/0` na seção **Network Access** do MongoDB Atlas para permitir conexões de qualquer lugar (útil para desenvolvimento).  
+- Configure o usuário e senha corretamente no MongoDB Atlas na seção **Database Access**.
