@@ -8,7 +8,8 @@ export async function criarAluno(req: Request, res: Response) {
 
     const cursoExistente = await CursoModel.findById(curso);
     if (!cursoExistente) {
-      return res.status(400).json({ erro: 'Curso não encontrado' });
+      res.status(400).json({ erro: 'Curso não encontrado' });
+      return;
     }
 
     const novoAluno = await AlunoModel.create({ nome, email, curso });
