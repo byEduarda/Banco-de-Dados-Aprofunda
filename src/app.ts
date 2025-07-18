@@ -3,16 +3,18 @@ import { connectToMongo } from './infra/database/mongoConnect';
 import alunoRoutes from './routes/alunoRoutes';
 import cursoRoutes from './routes/cursoRoutes';
 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('API de Alunos e Cursos')});
+  res.send('API de Alunos e Cursos');
+});
 
-app.use(alunoRoutes);
-app.use(cursoRoutes);
+app.use('/api/alunos', alunoRoutes);
+app.use('/api/cursos', cursoRoutes);
 
 connectToMongo();
 
