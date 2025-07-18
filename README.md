@@ -28,6 +28,7 @@ API REST simples para gerenciar alunos e cursos, usando Node.js, Express, TypeSc
 
 1. Clone este repositório:
    ```bash
+   https://github.com/byEduarda/Banco-de-Dados-Aprofunda.git
    
 2. Instale as dependências:
    ```bash
