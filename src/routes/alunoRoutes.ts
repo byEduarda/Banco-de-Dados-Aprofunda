@@ -3,7 +3,7 @@ import { criarAluno, listarAlunos } from '../controllers/alunoController';
 
 const router = Router();
 
-router.post('/alunos', criarAluno);
-router.get('/alunos', listarAlunos);
+router.post('/', criarAluno);
+router.get('/', listarAlunos);
 
 export default router;
