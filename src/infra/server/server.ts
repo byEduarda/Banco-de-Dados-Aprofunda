@@ -1,5 +1,5 @@
-
 import express from 'express';
+import { connectToMongo } from '../database/mongoConnect';
 import alunoRoutes from '../../routes/alunoRoutes';
 import cursoRoutes from '../../routes/cursoRoutes';
 
