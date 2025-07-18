@@ -1,36 +1,21 @@
-import dotenv from 'dotenv';
-dotenv.config();
 import express from 'express';
-import mongoose, { Schema, model} from 'mongoose';
+import { connectMongoDB } from './infra/database/mongoConnect';
+import alunoRoutes from './routes/alunoRoutes';
+import cursoRoutes from './routes/cursoRoutes';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URL! as string)
-.then(() => console.log('MongoDB connection'))
-.catch(err => console.error('MongoDB connection error:', err))
+app.get('/', (req, res) => {
+  res.send('API de Alunos e Cursos')});
 
-interface IAluno {
-    nome: string;
-    email: string;
-}
+app.use(alunoRoutes);
+app.use(cursoRoutes);
 
-const alunoSchema = new Schema<IAluno>({
-    nome:{type:String, required: true},
-    email:{type:String, required: true, unique: true},
-})
+connectMongoDB();
 
-const alunomodel = model<IAluno>('alunoModel', alunoSchema)
-
-app.post('/alunos', async( req, res) => {
-    try {
-        const novo = await alunomodel.create(req.body);
-        res.status(201).json(novo);
-    } catch (e) {
-        res.status(400).json({ erro: 'Dados inválidos', detalhe: e});
-    }
-})
-
-const PORT = process.env.PORT
-
-app.listen(PORT, () => console.log(`Servior rodando na porta ${PORT}`))
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
+});
