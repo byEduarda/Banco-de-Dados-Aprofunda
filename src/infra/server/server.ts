@@ -15,8 +15,9 @@ app.get('/', (_req, res) => {
 app.use('/api/alunos', alunoRoutes);
 app.use('/api/cursos', cursoRoutes);
 
-export function startServer(): void {
-  app.listen(PORT, () => {
+connectToMongo();
+app.listen(PORT, () => {
     console.log(`🚀 Servidor rodando na porta ${PORT}`);
-  });
-}
+  }
+);
+
