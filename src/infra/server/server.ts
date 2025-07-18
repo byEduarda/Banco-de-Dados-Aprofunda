@@ -1,13 +1,22 @@
+
 import express from 'express';
-import { connectToMongo } from '../database/mongoConnect';
+import alunoRoutes from '../../routes/alunoRoutes';
+import cursoRoutes from '../../routes/cursoRoutes';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(express.json());
 
-connectToMongo(); 
-
-app.get('/', (req, res) => {
-  res.send('API está rodando!');
+app.get('/', (_req, res) => {
+  res.send('API de Alunos e Cursos');
 });
 
-export default app;
+app.use(alunoRoutes);
+app.use(cursoRoutes);
+
+export function startServer(): void {
+  app.listen(PORT, () => {
+    console.log(`🚀 Servidor rodando na porta ${PORT}`);
+  });
+}
